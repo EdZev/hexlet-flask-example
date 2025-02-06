@@ -1,0 +1,40 @@
+<!-- courses/index.html -->
+
+{% extends "layout.html" %}
+
+<!-- этот блок заменит блок title из родительского шаблона -->
+{% block title %}Добавить пользователя{% endblock %}
+
+<!-- этот блок заменит блок content из родительского шаблона -->
+{% block content %}
+<form action="{{url_for('users_post')}}" method="post"  style="margin-bottom: 15px;">
+    <div style="margin-bottom: 15px;">
+        <label>
+            Name
+            {% if errors.name %}
+            <div style="color:red">{{errors.name}}</div>
+            {% endif %}
+            <input type="text" name="name" value="{{ user.name }}" />
+        </label>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label>
+            Email
+            {% if errors.email %}
+            <div style="color:red">{{errors.email}}</div>
+            {% endif %}
+            <input type="email" name="email" value="{{ user.email }}" />
+        </label>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+{% if messages %}
+<ul class="flashes">
+  {% for category, message in messages %}
+  <li class="{{category}}">{{message}}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
