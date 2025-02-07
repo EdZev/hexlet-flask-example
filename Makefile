@@ -1,5 +1,4 @@
 install:
-	curl -LsSf https://astral.sh/uv/install.sh | sh
 	uv pip sync requirements.txt
 
 build-requirements:
