@@ -1,7 +1,8 @@
 install:
 	curl -LsSf https://astral.sh/uv/install.sh | sh
-	uv venv
 	source $HOME/.local/bin/env
+	uv venv
+	source .venv/bin/activate
 	uv sync
 
 build-requirements:
