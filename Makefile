@@ -2,7 +2,7 @@ install:
 	curl -LsSf https://astral.sh/uv/install.sh | sh
 	uv venv
 	source $HOME/.local/bin/env
-	uv pip sync requirements.txt
+	uv sync
 
 build-requirements:
 	uv pip compile pyproject.toml -o requirements.txt
