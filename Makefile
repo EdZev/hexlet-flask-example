@@ -1,4 +1,7 @@
 install:
+	curl -LsSf https://astral.sh/uv/install.sh | sh
+	uv venv
+	source .venv/bin/activate
 	uv pip sync requirements.txt
 
 build-requirements:
@@ -7,8 +10,8 @@ build-requirements:
 dev:
 	flask --app example --debug run --port 8000
 
-start:
-	gunicorn --workers=4 --bind=127.0.0.1:8000 example:app
+prod:
+	uv run gunicorn --workers=4 --bind 0.0.0.0:$(PORT) example:app
 
 build:
 	./build.sh
