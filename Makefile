@@ -1,6 +1,5 @@
 install:
 	curl -LsSf https://astral.sh/uv/install.sh | sh
-	source $HOME/.local/bin/env
 	uv venv
 	source .venv/bin/activate
 	uv sync
@@ -14,6 +13,11 @@ dev:
 prod:
 	uv run gunicorn --workers=4 --bind 0.0.0.0:$(PORT) example:app
 
-build:
+render-start:
+	gunicorn --workers=4 --bind 0.0.0.0:$(PORT) example:app
+
+render-build:
+	echo $DATABASE_URL
+	pip install -r requirements.txt
 	./build.sh
 
