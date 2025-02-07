@@ -17,7 +17,7 @@ render-start:
 	gunicorn --workers=4 --bind 0.0.0.0:$(PORT) example:app
 
 render-build:
-	echo $DATABASE_URL
 	pip install -r requirements.txt
+	export DATABASE_URL="postgresql://hexlet_test_nmp3_user:NvNGqTtLC1djycfsiB6iWRZws5fvf6Lb@dpg-cuiq3uan91rc73bll6ig-a/hexlet_test_nmp3"
 	./build.sh
 
