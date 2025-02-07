@@ -14,9 +14,9 @@ prod:
 	uv run gunicorn --workers=4 --bind 0.0.0.0:$(PORT) example:app
 
 render-start:
+	./build.sh
 	gunicorn --workers=4 --bind 0.0.0.0:$(PORT) example:app
 
 render-build:
 	pip install -r requirements.txt
-	./build.sh
 
